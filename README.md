@@ -41,3 +41,13 @@ spring.jpa.hibernate.ddl-auto=update
 - Martin Terens 
 
  
+ ##Website Impressions
+ 
+ ### Landing Page
+ ![Image](./src/main/resources/impressions/LandingPage.JPG?raw=true)
+ 
+ ### Shipment Info
+ ![Image](./src/main/resources/impressions/ShipmentInfo.JPG?raw=true)
+ 
+ ### Help Page
+ ![Image](./src/main/resources/impressions/Help.JPG?raw=true)
