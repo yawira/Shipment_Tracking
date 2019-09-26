@@ -44,10 +44,10 @@ spring.jpa.hibernate.ddl-auto=update
  ##Website Impressions
  
  ### Landing Page
- ![Image](./src/main/resources/impressions/LandingPage.JPG?raw=true)
+ ![Image](./src/main/resources/impressions/LandingPage.jpg?raw=true)
  
  ### Shipment Info
- ![Image](./src/main/resources/impressions/ShipmentInfo.JPG?raw=true)
+ ![Image](./src/main/resources/impressions/ShipmentInfo.jpg?raw=true)
  
  ### Help Page
- ![Image](./src/main/resources/impressions/Help.JPG?raw=true)
+ ![Image](./src/main/resources/impressions/Help.jpg?raw=true)
