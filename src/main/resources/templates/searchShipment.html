@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <title>Tracking</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="author" content="colorlib.com">
+
+    <!--  Google Fonts > Font Roboto-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet"/>
+    <link href="../css/main.css" rel="stylesheet"/>
+</head>
+
+<body>
+    <div class="s01">
+        <form th:action="@{/searchShipment}"
+              th:object="${newShipment}" method="post">
+
+            <fieldset>
+                <legend>Shipment Tracking</legend>
+            </fieldset>
+            <div class="inner-form">
+                <div class="input-field first-wrap">
+                    <input id="search" type="text"
+                           autocomplete="off"
+                           placeholder="Please type in your tracking number" th:field="*{shippingMethod}"
+                           autofocus required minlength="1" maxlength="2"
+                           oninvalid="setCustomValidity('Tracking number...')"
+                           oninput="setCustomValidity('')"/>
+                </div>
+                <div class="input-field third-wrap">
+                    <button name="action" value="Suchen" class="btn-search">search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

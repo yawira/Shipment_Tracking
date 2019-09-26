@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:hh="http://www.w3.org/1999/xhtml" lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Info</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href="../css/main.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <div class="container search-table">
+
+         <div class="s01 s02">
+            <form th:action="@{/searchShipment}"
+                th:object="${newShipment}" method="post">
+                    <div class="inner-form">
+                        <div class="input-field first-wrap">
+                            <input id="search" type="text"
+                                   autocomplete="off"
+                                   placeholder="tracking number" th:field="*{shippingMethod}"
+                                    autofocus required minlength="1" maxlength="2"
+                           oninvalid="setCustomValidity('Tracking number...')"
+                           oninput="setCustomValidity('')"
+                           onfocus="this.value=''"/></div>
+                <div class="input-field third-wrap">
+                    <button name="action" value="search" class="btn-search">search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div th:if="${foundShipment.getShipmentNumber() != null}" class="search-list">
+        <h3>Shipment Details:</h3>
+        <table class="table" id="myTable">
+            <tr>
+                <td>Tracking Number</td>
+                <td th:text="${foundShipment.getShipmentNumber()}"></td>
+            </tr>
+            <tr>
+                <td>Delivery Status</td>
+                <td th:text="${foundShipment.getDeliveryStatus()}"></td>
+            </tr>
+            <tr>
+                <td>Time of Delivery</td>
+                <td th:utext="${foundShipment.getFormattedDeliveryDate()}"></td>
+            </tr>
+            <tr>
+                <td>Delivery Address</td>
+
+                <td th:utext="${foundShipment.addressee.getFirstName() + ' ' + foundShipment.addressee.getLastName() +
+                '<br>' + foundShipment.addressee.getStreet() +
+                ' ' + foundShipment.addressee.getNumber() +
+                '<br>' + foundShipment.addressee.getPostcode() +
+                ' ' + foundShipment.addressee.getCity() +
+                '<br>' + foundShipment.addressee.getCountry()}"></td>
+            </tr>
+            <tr>
+                <td>Shipping Method</td>
+                <td th:text="${foundShipment.getShippingMethod().toString()}"></td>
+            </tr>
+            <tr>
+                <td>Shipper</td>
+                <td th:utext="${foundShipment.shipper.getFirstName()  + ' ' + foundShipment.shipper.getLastName()  + ' ' +
+
+                '<br>' + foundShipment.shipper.getStreet() + ' ' + foundShipment.shipper.getNumber() +
+                '<br>' + foundShipment.shipper.getPostcode() + ' ' + foundShipment.shipper.getCity() +
+                '<br>' +  foundShipment.shipper.getCountry()}"></td>
+            </tr>
+            <tr>
+                <td>Release Date</td>
+                <td th:text="${foundShipment.getFormattedSubmissionDate()}"></td>
+            </tr>
+        </table>
+    </div>
+    <div th:unless="${foundShipment.getShipmentNumber() != null}" class="search-list">
+        <h3 align="center">No shipment found?</h3>
+        <table class="table" id="myTable1">
+            <tr align="center">
+                <td h5>Please try again or visit our <a th:href="@{/help}">Help</a>-page</td>
+        </table>
+    </div>
+    </form>
+</div>
+
+</body>
+
+
+</html>
